@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kamal Sundar SK - AI Engineer & Software Developer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+        line-height: 1.6;
+        color: #e2e8f0;
+        background: #0f172a;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(20px);
+        z-index: 1000;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      nav.scrolled {
+        padding: 1rem 0;
+        background: rgba(15, 23, 42, 0.98);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      nav.hero-blend {
+        background: transparent;
+        border-bottom: 1px solid transparent;
+        backdrop-filter: none;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: #60a5fa;
+        transition: all 0.3s ease;
+      }
+
+      nav.hero-blend .logo {
+        color: #ffffff;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #cbd5e1;
+        font-weight: 500;
+        transition: all 0.3s;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: #60a5fa;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #60a5fa;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      nav.hero-blend .nav-links a {
+        color: #f1f5f9;
+      }
+
+      nav.hero-blend .nav-links a:hover {
+        color: #ffffff;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+          135deg,
+          #1e293b 0%,
+          #0f172a 50%,
+          #1e1b4b 100%
+        );
+        color: white;
+        position: relative;
+        overflow: hidden;
+        padding-top: 80px;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 50%,
+            rgba(96, 165, 250, 0.03) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(167, 139, 250, 0.03) 0%,
+            transparent 50%
+          );
+        opacity: 1;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(96, 165, 250, 0.08) 0%,
+          transparent 70%
+        );
+        transform: translate(-50%, -50%);
+        animation: pulse 4s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.1);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+      }
+
+      .hero-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3rem;
+        width: 100%;
+      }
+
+      .hero-text {
+        flex: 1;
+        max-width: 650px;
+      }
+
+      .hero-image-container {
+        flex: 0 0 auto;
+        position: relative;
+      }
+
+      .profile-image {
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid rgba(96, 165, 250, 0.4);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+          0 0 40px rgba(96, 165, 250, 0.2);
+        transition: all 0.4s ease;
+        position: relative;
+        z-index: 2;
+      }
+
+      .profile-image:hover {
+        transform: translateY(-10px) scale(1.05);
+        border-color: rgba(96, 165, 250, 0.8);
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6),
+          0 0 60px rgba(96, 165, 250, 0.4);
+      }
+
+      .image-backdrop {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.3),
+          rgba(167, 139, 250, 0.3)
+        );
+        z-index: 1;
+        transition: all 0.4s ease;
+        filter: blur(20px);
+      }
+
+      .hero-image-container:hover .image-backdrop {
+        top: 25px;
+        left: 25px;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #ffffff;
+        text-shadow: 0 2px 20px rgba(96, 165, 250, 0.3);
+      }
+
+      .hero .subtitle {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 3rem;
+      }
+
+      .btn {
+        padding: 12px 30px;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background: linear-gradient(45deg, #3b82f6, #6366f1);
+        color: #fff;
+        border: 2px solid transparent;
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(45deg, #2563eb, #4f46e5);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: #cbd5e1;
+        border: 2px solid #475569;
+      }
+
+      .btn-secondary:hover {
+        background: rgba(96, 165, 250, 0.1);
+        border-color: #60a5fa;
+        color: #60a5fa;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Section Styles */
+      .section {
+        padding: 5rem 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+        color: #60a5fa;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(45deg, #3b82f6, #a78bfa);
+        border-radius: 2px;
+      }
+
+      /* About Section */
+      .about {
+        background: #1e293b;
+      }
+
+      .about-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .project-card {
+        background: #1e293b;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        border: 1px solid #334155;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #3b82f6, #a78bfa, #f59e0b);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        border-color: #475569;
+      }
+
+      .project-card:hover::before {
+        opacity: 1;
+      }
+
+      .project-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.3));
+      }
+
+      .project-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #f1f5f9;
+      }
+
+      .project-description {
+        color: #94a3b8;
+        margin-bottom: 1.5rem;
+      }
+
+      .project-impact {
+        background: rgba(59, 130, 246, 0.1);
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        border-left: 4px solid #3b82f6;
+        color: #cbd5e1;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: linear-gradient(45deg, #3b82f6, #6366f1);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+      }
+
+      .project-link:hover {
+        background: transparent;
+        border-color: #3b82f6;
+        color: #60a5fa;
+        transform: translateY(-2px);
+      }
+
+      /* Skills Section */
+      .skills {
+        background: #1e293b;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .skill-category {
+        background: #0f172a;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        border: 1px solid #334155;
+        transition: all 0.3s ease;
+      }
+
+      .skill-category:hover {
+        transform: translateY(-5px);
+        border-color: #475569;
+      }
+
+      .skill-category h3 {
+        color: #60a5fa;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .skill-tag {
+        background: rgba(59, 130, 246, 0.15);
+        color: #93c5fd;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .skill-tag:hover {
+        background: rgba(59, 130, 246, 0.25);
+        transform: scale(1.05);
+      }
+
+      /* Experience Section */
+      .experience-item {
+        background: #1e293b;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        border-left: 4px solid #3b82f6;
+        border: 1px solid #334155;
+      }
+
+      .experience-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #f1f5f9;
+        margin-bottom: 0.5rem;
+      }
+
+      .experience-company {
+        color: #60a5fa;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .experience-achievements {
+        list-style: none;
+        color: #94a3b8;
+      }
+
+      .experience-achievements li {
+        padding: 0.25rem 0;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .experience-achievements li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: #60a5fa;
+      }
+
+      /* Contact Section */
+      .contact {
+        background: linear-gradient(
+          135deg,
+          #1e293b 0%,
+          #0f172a 50%,
+          #1e1b4b 100%
+        );
+        color: white;
+        position: relative;
+      }
+
+      .contact::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          circle at 30% 50%,
+          rgba(96, 165, 250, 0.03) 0%,
+          transparent 50%
+        );
+        opacity: 1;
+      }
+
+      .contact-content {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #cbd5e1;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        border: 2px solid transparent;
+      }
+
+      .contact-link:hover {
+        transform: translateY(-3px);
+        color: #60a5fa;
+        border-color: rgba(96, 165, 250, 0.3);
+        background: rgba(96, 165, 250, 0.1);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-container {
+          flex-direction: column-reverse;
+          text-align: center;
+        }
+
+        .hero-text {
+          max-width: 100%;
+        }
+
+        .profile-image {
+          width: 250px;
+          height: 250px;
+        }
+
+        .image-backdrop {
+          width: 250px;
+          height: 250px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .contact-links {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      /* Animation on scroll */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <div class="nav-container">
+          <div class="logo">KS</div>
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content fade-in">
+          <div class="hero-container">
+            <div class="hero-text">
+              <h1>Kamal Sundar SK</h1>
+              <p class="subtitle">
+                Computer Science Engineer specializing in AI & Software Systems.
+                I build scalable solutions and AI-driven systems that improve
+                performance and reliability.
+              </p>
+              <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">
+                  <span>⚡</span>
+                  View My Work
+                </a>
+                <a href="resume.pdf" download class="btn btn-secondary">
+                  <span>📄</span>
+                  View my Resume
+                </a>
+              </div>
+            </div>
+            <div class="hero-image-container">
+              <div class="image-backdrop"></div>
+              <img
+                src="passport.jpeg"
+                alt="Kamal Sundar SK"
+                class="profile-image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+      <div class="container">
+        <h2 class="section-title fade-in">About Me</h2>
+        <div class="about-content fade-in">
+          <p>
+            As a Computer Science student, I'm passionate about designing
+            scalable, data-driven solutions that address real-world challenges.
+            My work explores how engineering principles and AI techniques can be
+            combined to create systems that are both reliable and impactful. In
+            a professional setting, I applied this mindset to enhance data
+            pipelines and refine ML models
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title fade-in">Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card fade-in">
+            <div class="project-icon">🚀</div>
+            <h3 class="project-title">CometX - Fake News Detection</h3>
+            <p class="project-description">
+              Advanced misinformation detection system combining Graph Neural
+              Networks for network pattern analysis, Vision Transformers for
+              media verification, and HEMMR for credibility assessment.
+            </p>
+            <div class="project-impact">
+              <strong>Impact:</strong> Achieved 92% accuracy with 70% better
+              credibility assessments
+            </div>
+            <div class="project-links">
+              <a
+                target="_blank"
+                href="https://github.com/Sundarsk-Dev/Comet-X/tree/main/cometx(wrk)"
+                class="project-link"
+              >
+                <span>📦</span>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-icon">🤖</div>
+            <h3 class="project-title">ClaimwiseAI - Financial Search</h3>
+            <p class="project-description">
+              HackRx solution developed in a compettion for Bajaj Finserv that
+              revolutionized financial claims search using dual-LLM semantic
+              search with advanced embeddings for precise matching and
+              generation.
+            </p>
+            <div class="project-impact">
+              <strong>Impact:</strong> 35% higher accuracy, 40% faster response
+              times
+            </div>
+            <div class="project-links">
+              <a
+                target="_blank"
+                href="https://github.com/Sundarsk-Dev/ClaimWise-AI/tree/main/HACKRAG"
+                class="project-link"
+              >
+                <span>📦</span>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-icon">📄</div>
+            <h3 class="project-title">Hybrid Intrusion Detection</h3>
+            <p class="project-description">
+              Published research on network security featuring a novel hybrid
+              approach combining LSTM neural networks with XGBoost for superior
+              network traffic classification and threat detection.
+            </p>
+            <div class="project-impact">
+              <strong>Impact:</strong> 98% accuracy, 50% improved detection
+              rates
+            </div>
+            <div class="project-links">
+              <a
+                target="_blank"
+                href="https://drive.google.com/file/d/19m6nn1rb_i0ovpB9kvTQVkAEkFyYruFR/view"
+                class="project-link"
+              >
+                <span>📋</span>
+                Research Paper
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+      <div class="container">
+        <h2 class="section-title fade-in">Skills & Technology</h2>
+        <div class="skills-grid">
+          <div class="skill-category fade-in">
+            <h3><span>💻</span> Programming Languages</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">C</span>
+            </div>
+          </div>
+
+          <div class="skill-category fade-in">
+            <h3><span>🧠</span> AI/ML Frameworks</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">TensorFlow</span>
+              <span class="skill-tag">PyTorch</span>
+              <span class="skill-tag">Scikit-learn</span>
+              <span class="skill-tag">FastAPI</span>
+            </div>
+          </div>
+
+          <div class="skill-category fade-in">
+            <h3><span>🛠️</span> Tools & Infrastructure</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Kafka</span>
+              <span class="skill-tag">Apache Flink</span>
+              <span class="skill-tag">Redis</span>
+              <span class="skill-tag">Git</span>
+            </div>
+          </div>
+
+          <div class="skill-category fade-in">
+            <h3><span>🗄️</span> Databases</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">MySQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title fade-in">Experience</h2>
+        <div class="experience-item fade-in">
+          <h3 class="experience-title">Data Engineering & AI Intern</h3>
+          <p class="experience-company">NSIC • 2024</p>
+          <ul class="experience-achievements">
+            <li>
+              Built and optimized data pipelines using Python and Pandas,
+              achieving 25% improvement in data integrity
+            </li>
+            <li>
+              Enhanced data processing throughput by 10% through pipeline
+              optimization
+            </li>
+            <li>
+              Fine-tuned deep learning models resulting in 16% accuracy
+              improvement
+            </li>
+            <li>
+              Gained hands-on experience with generative AI concepts and
+              implementations
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+      <div class="container">
+        <div class="contact-content fade-in">
+          <h2 class="section-title" style="color: white">Let's Connect</h2>
+          <p>
+            I'm always interested in discussing new opportunities, collaborating
+            on innovative projects, or sharing insights about AI and software
+            development.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:Kamalsundarsk@gmail.com" class="contact-link">
+              <span>✉️</span>
+              Email
+            </a>
+            <a
+              target="_blank"
+              href="https://github.com/Sundarsk-Dev"
+              class="contact-link"
+            >
+              <span>📦</span>
+              GitHub
+            </a>
+            <a
+              target="_blank"
+              href="https://linkedin.com/in/sundar-sk"
+              class="contact-link"
+            >
+              <span>💼</span>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Load Lenis Smooth Scroll Library from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.0.42/lenis.min.js"></script>
+
+    <script>
+      // ===== FEATURE 1: LENIS SMOOTH SCROLL =====
+      
+      // Initialize Lenis with configuration
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 2,
+      });
+
+      // Animation loop using requestAnimationFrame
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      // Start the animation loop
+      requestAnimationFrame(raf);
+
+      // Smooth scroll for navigation links using Lenis
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const target = document.querySelector(targetId);
+          
+          if (target) {
+            lenis.scrollTo(target, {
+              offset: 0,
+              duration: 1.5,
+            });
+          }
+        });
+      });
+
+      // ===== INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS =====
+      
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      // Observe all fade-in elements
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Make the first hero element visible immediately
+      document.querySelector(".hero .fade-in").classList.add("visible");
+    </script>
+  </body>
+</html>
